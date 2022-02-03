@@ -13,7 +13,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="titulo">Agregar Tarjeta</h5>
+                    <h5 class="titulo">{{accion}}</h5>
                     <form [formGroup]="form" (submit)="agregarTarjeta()">
                         <div class="form-row align-items-center">
                             <div class="col-sm-12 my-1">
@@ -80,15 +80,15 @@
                     <h5 class="titulo">Listado de Tarjetas</h5>
                     <table class="table">
                         <tbody>
-                            <tr *ngFor="let item of listTarjeta; let i= index">
+                            <tr *ngFor="let item of listTarjeta">
                                 <td>{{item.titular}}</td>
                                 <td>{{item.numeroTarjeta}}</td>
                                 <td>{{item.fechaExpiracion}}</td>
                                 <td>
-                                    <i class="far fa-edit text-info"></i>
+                                    <i (click)="editarTarjeta(item)" class="far fa-edit text-info"></i>
                                 </td>
                                 <td>
-                                    <i (click)="eliminarTarjeta(i)" class="far fa-trash-alt text-danger"></i>
+                                    <i (click)="eliminarTarjeta(item.id)" class="far fa-trash-alt text-danger"></i>
                                 </td>
                             </tr>
                         </tbody>
